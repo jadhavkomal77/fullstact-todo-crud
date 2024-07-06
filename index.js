@@ -8,7 +8,7 @@ const app = exprsss()
 app.use(exprsss.json())
 app.use(cors())
 
-app.use(exprsss.static("dist"))
+app.use(exprsss.static("public"))
 app.use("/api/todos", require("./route/todo.route"))
 
 app.use(("*"), (req, res) => {
@@ -20,7 +20,7 @@ app.use((err, req, res, next) => {
 })
 
 mongoose.connection.once("open", () => {
-    console.log("MONGO CONNECTED");
+    console.log("MONGO CONNECTED")
     app.listen(process.env.PORT, console.log("SERVER RUNNING"))
 })
 
